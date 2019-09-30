@@ -1,0 +1,7 @@
+<div class="star"
+     (click)="handleClick()"
+     [ngClass]="{'filled': isFilled, 'hover': isHovered,'disabled': isDisabled}"
+     (mouseenter)="onMouseEnter()"
+     (mouseleave)="onMouseLeave()">
+    <i class="material-icons">star</i>
+</div>

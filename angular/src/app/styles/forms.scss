@@ -1,0 +1,27 @@
+.gof-inputfield {
+  min-height: 36px;
+  margin-bottom: 20px;
+  background: transparent;
+  border-bottom: 1px solid $dark-grey;
+  width: 100%;
+  color: $grey;
+}
+
+.gof-input-wrapper {
+  .gof-inputfield {
+    margin-bottom: 0!important;
+  }
+
+  .gof-inputfield.ng-untouched ~ .validation-error {
+    opacity: 0;
+  }
+
+  .validation-error {
+    display: block;
+    height: 20px;
+    margin-top: 10px;
+    color: $errorText;
+    margin-bottom: 20px;
+    font-size: 12px;
+  }
+}

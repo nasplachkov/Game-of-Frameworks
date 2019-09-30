@@ -1,0 +1,20 @@
+.gof-alert-container {
+  color: $white;
+  mat-dialog-container {
+    padding: 0;
+  }
+  .gof-alert {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    min-width: 320px;
+    min-height: 130px;
+    padding: 20px;
+    background-color: $modalBackground;
+    button {
+      background-color: $button;
+      width: 50px;
+      margin: auto auto 0;
+    }
+  }
+}

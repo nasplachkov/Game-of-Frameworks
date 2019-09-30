@@ -1,0 +1,12 @@
+.gof-movie-detail {
+  max-width: 55vw !important;
+  textarea {
+    height: 100px!important;
+  }
+}
+
+.gof-movie-detail mat-dialog-container,
+.gof-trailer mat-dialog-container {
+  padding: 0;
+  overflow: unset;
+}

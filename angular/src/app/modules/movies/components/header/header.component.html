@@ -1,0 +1,16 @@
+<div class="row header">
+    <div class="col s12 m6">
+        <app-gof-logo [white]="true" [simple]="true"></app-gof-logo>
+    </div>
+    <div class="col s12 m6 l4 push-l2">
+        <div class="input-field">
+            <input
+                id="search"
+                class="gof-inputfield"
+                type="text"
+                #searchInput
+                (input)="searchChangedSubject.next($event.target.value)">
+            <label for="search" [class.active]="searchInput.value">Search</label>
+        </div>
+    </div>
+</div>

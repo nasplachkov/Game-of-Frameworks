@@ -1,0 +1,59 @@
+<div class="gof-auth-container">
+    <div class="logo-container">
+        <i class="gof-logo"></i>
+    </div>
+    <form
+        autocomplete="off"
+        [formGroup]="authForm"
+        class="auth-form-container">
+        <span class="form-title">SIGN UP</span>
+        <app-input-field
+            [controlLabel]="'Email'"
+            [controlName]="'email'"
+            [formGroup]="authForm"
+            [controlType]="'email'">
+        </app-input-field>
+        <app-input-field
+            [controlLabel]="'Password'"
+            [controlName]="'password'"
+            [formGroup]="authForm"
+            [controlType]="'password'">
+        </app-input-field>
+        <app-input-field
+            [controlLabel]="'Confirm password'"
+            [controlName]="'confirmPassword'"
+            [formGroup]="authForm"
+            [controlType]="'password'">
+        </app-input-field>
+        <app-input-field
+            [controlLabel]="'Full name'"
+            [controlName]="'fullName'"
+            [formGroup]="authForm"
+            [controlType]="'text'">
+        </app-input-field>
+        <app-input-field
+            [controlLabel]="'Phone'"
+            [controlName]="'phone'"
+            [formGroup]="authForm"
+            [controlType]="'text'">
+        </app-input-field>
+        <app-input-field
+            [controlLabel]="'Address'"
+            [controlName]="'address'"
+            [formGroup]="authForm"
+            [controlType]="'text'">
+        </app-input-field>
+        <span class="server-error">{{serverErrorMessage}}</span>
+        <button
+            type="button"
+            class="mui-btn"
+            [disabled]="!authForm.valid && false"
+            (click)="register()">
+            REGISTER
+        </button>
+    </form>
+    <span class="sing-up-label">
+        Already have an account? Login
+        <span [routerLink]="['/'+ROUTING_CONSTANTS.authentication.login]">here</span>
+    </span>
+</div>

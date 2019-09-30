@@ -1,0 +1,58 @@
+<div class="movie-item">
+    <div class="movie-modal">
+        <div class="modal-content">
+            <div class="row">
+                <div class="col s12 m5 l3">
+                    <img class="movie-item-poster" [src]="movie.poster_path" alt=""/>
+                </div>
+                <div class="col s12 m7 l9 movie-item-details">
+                    <div class="row">
+                        <div class="col s12 movie-item-title">
+                            {{movie.title}}
+                            <ng-template [ngIf]="movie.release_date">
+                                ({{movie.release_date | date: YEAR_FORMAT}})
+                            </ng-template>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <b>Plot: </b>{{movie.overview}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <b>Genre: </b>{{movie.genre_ids | genreList}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <b>Rating: </b>{{movie.vote_average}} ({{movie.vote_count}} votes)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <b>Personal Rating: </b>
+                            <app-rating-input [(ngModel)]="userRating"></app-rating-input>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <b>Write a review</b>
+                            <textarea rows={6} placeholder="Type here..." [(ngModel)]="userReview"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 right-align">
+                    <button class="btn btn-primary waves-effect waves-light margin-button-right" (click)="handleSubmit()">
+                        Submit
+                    </button>
+                    <button class="btn btn-primary waves-effect waves-light" (click)="handleClose()">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

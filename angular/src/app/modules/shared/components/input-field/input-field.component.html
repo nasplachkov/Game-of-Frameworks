@@ -1,0 +1,12 @@
+<div class="input-field gof-input-wrapper">
+    <input
+        [id]="controlName"
+        class="gof-inputfield"
+        [type]="controlType"
+        [(ngModel)]="val"
+        (ngModelChange)="writeValue($event)">
+    <small class="validation-error">
+        {{formGroup.get(controlName).errors | validationError}}
+    </small>
+    <label [for]="controlName" [class.active]="formGroup.get(controlName).value">{{controlLabel}}</label>
+</div>

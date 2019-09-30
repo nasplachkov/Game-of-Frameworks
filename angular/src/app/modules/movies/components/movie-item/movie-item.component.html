@@ -1,0 +1,79 @@
+<div class="row movie-item">
+    <div class="col s12 m5 l3">
+        <img class="movie-item-poster" [src]="movie.poster_path" alt=""/>
+    </div>
+    <div class="col s12 m7 l9 movie-item-details">
+        <div class="row">
+            <div class="col s12 movie-item-title">
+                <b>
+                    {{movie.title}}
+                    <ng-template [ngIf]="movie.release_date">
+                        ({{movie.release_date | date: 'yyyy'}})
+                    </ng-template>
+                </b>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <b>Plot: </b>{{movie.overview}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <b>Genre: </b>{{movie.genre_ids | genreList}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <b>Rating: </b>{{movie.vote_average}} ({{movie.vote_count}} votes)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <b>Personal Rating: </b>
+                <app-rating-input [disabled]="true" [(ngModel)]="movie.userRating"></app-rating-input>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <b>Personal Review: </b>
+                {{movie.userReview || '- - -'}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <button class="btn btn-primary waves-effect waves-light margin-button-right" (click)="handleFavorite()">
+                    <i *ngIf="isFavorite" class="material-icons red-text">favorite</i>
+                    <i *ngIf="!isFavorite" class="material-icons">favorite_border</i>
+                    &nbsp;
+                    {{isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}}
+                </button>
+                &nbsp;
+                <button class="btn btn-primary waves-effect waves-light" (click)="handleTrailer()">
+                    <i class="material-icons">play_arrow</i>
+                    &nbsp;
+                    Watch Trailer
+                </button>
+            </div>
+        </div>
+    </div>
+    <button
+        *ngIf="isFavorite"
+        class="btn-floating btn-large waves-effect waves-light dropdown-menu dropdown-trigger"
+        (click)="contextMenuOpened = !contextMenuOpened">
+        <i class="material-icons dark-text">more_vert</i>
+    </button>
+
+    <ul
+        class="dropdown-content"
+        closeOnOutside
+        [triggerClass]="['dropdown-trigger']"
+        (close)="contextMenuOpened = false"
+        [ngClass]="{'opened': contextMenuOpened}">
+        <li>
+            <a class="modal-trigger" (click)="openDetailModal()">
+                <i class="material-icons dark-text">mode_edit</i> Add Review
+            </a>
+        </li>
+    </ul>
+</div>

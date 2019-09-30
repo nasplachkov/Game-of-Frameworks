@@ -1,0 +1,11 @@
+<div class="rating gof-rating-input">
+    <app-star
+        *ngFor="let star of stars;let i = index"
+        (onClick)="writeValue(i+1)"
+        [isFilled]="star.filled"
+        [isHovered]="i<=hoverIndex"
+        [isDisabled]="disabled"
+        (mouseEnter)="handleMouseEnter(i)"
+        (mouseLeave)="handleMouseLeave()">
+    </app-star>
+</div>

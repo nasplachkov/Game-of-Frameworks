@@ -1,0 +1,24 @@
+<div class="container">
+    <app-header (searchChanged)="queryMovies($event)"></app-header>
+    <div class="row">
+        <div class="col s12">
+            <label class="right">
+                <input type="checkbox" [checked]="isFavorites" (change)="toggleIsOnlyFavorites()"/>
+                <span>Show Favorites</span>
+            </label>
+        </div>
+    </div>
+    <ng-template [ngIf]="(movies | async)?.length">
+        <app-movie-item
+            *ngFor="let movie of (movies | async)"
+            [movie]="movie"
+            (onFavoriteChange)="handleFavorite(movie)"
+            (openTrailer)="openTrailer(movie)"
+            (openDetail)="openDetail(movie)"
+            [isFavorite]="(favoriteMovies | async)[movie.id]">
+        </app-movie-item>
+    </ng-template>
+    <div class="title center movie-list-empty" *ngIf="!(movies | async)?.length">
+        {{isFavorites ? emptyListMessage.favorites : emptyListMessage.search }}
+    </div>
+</div>
